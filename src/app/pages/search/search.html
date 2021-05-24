@@ -43,7 +43,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-card  [routerLink]="['/app/tabs/my-listings/listing', listing.id]" [queryParams]="{from: 'search'}"  *ngFor="let listing of listings" [hidden]="listing.hide || listing?.hideForChat">
+  <ion-card   *ngFor="let listing of listings" [hidden]="listing.hide || listing?.hideForChat">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -94,6 +94,13 @@
           <ion-button (click)="onChatWithOwner(listing.id)" color="primary"  shape="round" size="small" fill="outline">
             <ion-icon slot="start" name="chatbox-outline"></ion-icon>
             Chat
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center ion-justify-content-center">
+
+          <ion-button [routerLink]="['/app/tabs/my-listings/listing', listing.id]" [queryParams]="{from: 'search'}"  color="primary"  shape="round" size="small" fill="outline">
+            <ion-icon slot="start" name="eye-outline"></ion-icon>
+            View
           </ion-button>
         </ion-col>
         <ion-col class="ion-text-center ion-justify-content-center">

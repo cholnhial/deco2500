@@ -21,7 +21,7 @@
   </ion-header>
 
 
-  <ion-card [routerLink]="['/app/tabs/my-listings/listing', listing.id]" [queryParams]="{from: 'favourite'}" *ngFor="let listing of listings">
+  <ion-card  *ngFor="let listing of listings">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -72,6 +72,13 @@
           <ion-button [hidden]="!listing.available" (click)="onChatWithOwner(listing.id)" color="primary"  shape="round" size="small" fill="outline">
             <ion-icon slot="start" name="chatbox-outline"></ion-icon>
             Chat
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center ion-justify-content-center">
+
+          <ion-button [routerLink]="['/app/tabs/my-listings/listing', listing.id]" [queryParams]="{from: 'favourite'}"  color="primary"  shape="round" size="small" fill="outline">
+            <ion-icon slot="start" name="eye-outline"></ion-icon>
+            View
           </ion-button>
         </ion-col>
         <ion-col class="ion-justify-content-end ion-text-right">
