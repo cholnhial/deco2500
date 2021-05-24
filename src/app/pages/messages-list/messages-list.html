@@ -1,0 +1,43 @@
+<ion-header>
+  <!--<ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Listings</ion-title>
+  </ion-toolbar>-->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let chat of chats">
+        <ion-card [routerLink]="'/app/tabs/messages/chat/' + chat?.id" class="speaker-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none" class="speaker-item">
+              <ion-avatar slot="start">
+                <img [src]="chat.ownerAvatar">
+              </ion-avatar>
+              <ion-label>
+                <h2>{{chat.owner}}</h2>
+                <div *ngIf="chat.messages.length> 0">
+                <p>{{chat.messages[chat.messages.length - 1].sender + ': '+ chat.messages[chat.messages.length - 1].message}}</p>
+                <i>{{chat.messages[chat.messages.length - 1].friendlyTime}}</i>
+                </div>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list-header [hidden]="chats?.length > 0">
+    You have no messages
+  </ion-list-header>
+</ion-content>

@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Comments</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content #content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-item detail="false" lines="none" class="speaker-item">
+        <ion-avatar slot="start">
+          <img src="https://i.pravatar.cc/300">
+        </ion-avatar>
+        <ion-label>
+          <h2>Anonymous Joe</h2>
+          <p>2 hrs ago</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      Who do you think you are telling me to recycle?
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon  name="thumbs-up"></ion-icon>
+            <div> 20k Likes</div>
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-item detail="false" lines="none" class="speaker-item">
+        <ion-avatar slot="start">
+          <img src="https://i.pravatar.cc/300?asd">
+        </ion-avatar>
+        <ion-label>
+          <h2>Anonymous Mike</h2>
+          <p>2 hrs ago</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      Anonymous Joe, why don't you get a life?
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon  name="thumbs-up"></ion-icon>
+            <div> 20k Likes</div>
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+  <ion-card *ngFor="let comment of comments; index as i">
+    <ion-card-header>
+      <ion-item detail="false" lines="none" class="speaker-item">
+        <ion-avatar slot="start">
+          <img src="https://i.pravatar.cc/300?888">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ comment.name}}</h2>
+          <p>{{ comment.timePosted}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      {{ comment.message}}
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon  name="thumbs-up"></ion-icon>
+            <div> 20k Likes</div>
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-button fill="clear" (click)="onDeleteComment(i)">
+            DELETE
+            <ion-icon  name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+</ion-content>
+<ion-footer>
+<ion-toolbar>
+  <ion-input #commentText type="text" placeholder="Comment..." [(ngModel)]="comment"></ion-input>
+  <ion-buttons slot="end">
+    <ion-button (click)="onComment()">
+      POST
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+</ion-footer>

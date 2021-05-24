@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Listing Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <h2>{{listing?.title}}</h2>
+  <h4>Photos</h4>
+  <ion-slides scrollbar="true" pager="true" [options]="{spaceBetween: 10, slidesPerView: 2}">
+
+    <ion-slide *ngFor="let image of listing?.images; index as i">
+      <div class="slide">
+        <div class="image-area">
+          <img  [src]="image" (click)="showGallery(i)">
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <div class="divider"></div>
+  <ion-label>
+    <h2>Posted: {{ listing?.friendlyPostedTime}} ago</h2>
+    <h2>Category: {{ listing?.category }}</h2>
+    <h2>Condition: {{ listing?.condition }}</h2>
+    <h2>Location: {{ listing?.location }}</h2>
+  </ion-label>
+  <h4>Description</h4>
+  <p>{{listing?.description}}</p>
+  <ion-row>
+    <ion-col class="ion-text-center ion-justify-content-center">
+
+      <ion-button (click)="onChatWithOwner(listing.id)" [hidden]="hideChatButton" color="primary"  shape="round" size="small" fill="outline">
+        <ion-icon slot="start" name="chatbox-outline"></ion-icon>
+        Chat
+      </ion-button>
+    </ion-col>
+    <ion-col [hidden]="hideFavouriteButton" class="ion-text-center ion-justify-content-center">
+      <ion-button (click)="onAddToFavourites(listing)"  color="secondary" shape="round" size="small" fill="outline">
+        <ion-icon slot="start" class="favourite" name="heart-outline"></ion-icon>
+        Favourite
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <!--<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title>My Listings</ion-title>
+</ion-toolbar>-->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/messages"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentConfirmDelete()" color="danger" fill="outline">
+        Delete Chat
+        <ion-icon slot="end" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content #content class="ion-padding">
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <img [src]="chat?.listing?.images[0]">
+    </ion-thumbnail>
+    <ion-label>
+    <h2>{{chat?.listing?.title}}</h2>
+      <p>Owner: {{ chat?.owner}}</p>
+      <p>Location: {{ chat?.listing?.location}}</p>
+    </ion-label>
+    <ion-button (click)="onViewDetails(chat.listing.id)" size="small" fill="outline" color="primary" class="ion-text-right">Details</ion-button>
+  </ion-item>
+
+  <div  *ngFor="let message of chat?.messages; index as i">
+    <div *ngIf="message.sender != 'Me'">
+      <div class="yours messages">
+        <div class="message">
+          {{message.message}}
+        </div>
+      </div>
+      <ion-text color="dark" class="ion-text-right"><p>{{message.friendlyTime}}</p></ion-text>
+    </div>
+    <div *ngIf="message.sender == 'Me'">
+      <div class="mine messages">
+        <div class="message last" [ngClass]="{'last': chat.messages.length == i+1}">
+          {{ message.message }}
+        </div>
+        <ion-text color="dark" class="ion-text-right"><p>{{message.friendlyTime}}</p></ion-text>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-input #userMessageText type="text" placeholder="Message..." [(ngModel)]="userMessage"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSendMessage()">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

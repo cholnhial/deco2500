@@ -1,0 +1,62 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button *ngIf="ios" (click)="dismiss()">Cancel</ion-button>
+      <ion-button *ngIf="!ios" (click)="resetFilter(false)">Reset</ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      Filter Listings
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="applyFilters()" strong>Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- <ion-list [lines]="ios ? 'inset' : 'full'">
+    <ion-list-header>Tracks</ion-list-header>
+
+    <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
+      <ion-icon *ngIf="ios" slot="start" [name]="track.icon" color="medium"></ion-icon>
+      <ion-label>{{track.name}}</ion-label>
+      <ion-checkbox [(ngModel)]="track.isChecked"></ion-checkbox>
+    </ion-item>
+
+  </ion-list>-->
+
+  <ion-list [lines]="ios ? 'inset' : 'full'">
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="filter.category" interface="popover">
+        <ion-select-option value="All">All</ion-select-option>
+        <ion-select-option value="Electronics">Electronics</ion-select-option>
+        <ion-select-option value="Clothes">Clothes</ion-select-option>
+        <ion-select-option value="Vehicles">Vehicles</ion-select-option>
+        <ion-select-option value="Furniture">Furniture</ion-select-option>
+        <ion-select-option value="Footwear">Footwear</ion-select-option>
+        <ion-select-option value="Miscellaneous">Miscellaneous</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Condition</ion-label>
+      <ion-select [(ngModel)]="filter.condition" interface="popover">
+        <ion-select-option value="All">All</ion-select-option>
+        <ion-select-option value="Excellent">Excellent</ion-select-option>
+        <ion-select-option value="Good">Good</ion-select-option>
+        <ion-select-option value="Fair">Fair</ion-select-option>
+        <ion-select-option value="Damaged">Damaged</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Distance</ion-label>
+
+      <ion-range [(ngModel)]="filter.distance"  ticks="true" pin="true" snaps="true" value="10" min="10" max="300" step="10">
+        <ion-label slot="end">{{filter.distance}} KM</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

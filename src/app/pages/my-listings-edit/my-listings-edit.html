@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/my-listings"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Listing</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <component-photos></component-photos>
+  <form #listingForm="ngForm" novalidate>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label>Available</ion-label>
+        <ion-toggle name="available" [(ngModel)]="listing.available"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked"  color="primary">Title</ion-label>
+        <ion-input placeholder="iPhone 100" [(ngModel)]="listing.title" name="fullName" type="text" #title="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="title.valid || submitted == false" class="ion-padding-start">
+          A title is required
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked"  color="primary">Description</ion-label>
+        <ion-textarea auto-grow="true" rows="5" placeholder="It's used..." [(ngModel)]="listing.description" name="description" type="text" #description="ngModel" required>
+        </ion-textarea>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="description.valid || submitted == false" class="ion-padding-start">
+          A description is required
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select name="category" [(ngModel)]="listing.category" interface="popover" #category="ngModel">
+          <ion-select-option value="na">N/A</ion-select-option>
+          <ion-select-option value="electronics">Electronics</ion-select-option>
+          <ion-select-option value="clothes">Clothes</ion-select-option>
+          <ion-select-option value="vehicles">Vehicles</ion-select-option>
+          <ion-select-option value="furniture">Furniture</ion-select-option>
+          <ion-select-option value="footwear">Footwear</ion-select-option>
+          <ion-select-option  value="miscellaneous">Miscellaneous</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Condition</ion-label>
+        <ion-select name="condition" [(ngModel)]="listing.condition" interface="popover" #condition="ngModel">
+          <ion-select-option value="na">N/A</ion-select-option>
+          <ion-select-option value="excellent">Excellent</ion-select-option>
+          <ion-select-option value="good">Good</ion-select-option>
+          <ion-select-option value="fair">Fair</ion-select-option>
+          <ion-select-option value="damaged">Damaged</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked"  color="primary">Location</ion-label>
+        <ion-input placeholder="Brisbane" [(ngModel)]="listing.location" name="location" type="text" #location="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="location.valid || submitted == false" class="ion-padding-start">
+          A location is required
+        </p>
+      </ion-text>
+    </ion-list>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="onSave(listingForm)" type="submit" expand="block">
+    Save
+    <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+  </ion-button>
+</ion-footer>

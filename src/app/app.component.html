@@ -1,0 +1,63 @@
+<ion-app [class.dark-theme]="dark">
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu  contentId="main-content">
+      <ion-content>
+
+
+        <ion-list *ngIf="loggedIn" lines="none">
+
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/profile" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                PROFILE
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/settings" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="cog"></ion-icon>
+              <ion-label>
+                SETTINGS
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/notifications" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="bell-outline"></ion-icon>
+              <ion-label>
+                NOTIFICATIONS <ion-badge color="danger">2</ion-badge>
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item>
+              <ion-icon slot="start" name="moon-outline"></ion-icon>
+              <ion-label>
+                DARK MODE
+              </ion-label>
+              <ion-toggle [(ngModel)]="dark"></ion-toggle>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="logout()" detail="false">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+
+
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
+
+</ion-app>

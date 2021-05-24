@@ -1,0 +1,22 @@
+<ion-slides scrollbar="true" [options]="{spaceBetween: 10, slidesPerView: 2}">
+
+  <ion-slide *ngFor="let image of images; index as i">
+    <div class="slide">
+      <div class="image-area">
+        <img [src]="image">
+        <button (click)="onRemoveImage(i)" class="remove-image" href="#" style="display: inline;">&#215;</button>
+      </div>
+    </div>
+  </ion-slide>
+</ion-slides>
+<ion-grid>
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col size="12" class="ion-text-center">
+      <ion-button (click)="onAddImage()" color="secondary">
+        Upload photo
+        <ion-icon name="camera" slot="end"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+

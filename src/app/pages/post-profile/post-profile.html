@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content  class="ion-padding">
+  <div class="ion-padding-top ion-text-center">
+    <img src="https://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
+    <h2>Greta Thunberg</h2>
+    <div>
+      <ion-button (click)="onFollow()" color="success" class="ion-text-right">Follow</ion-button>
+    </div>
+    <h4>Bio.</h4>
+    <ion-label>I really care about the environment and would like everyone else to as well.</ion-label>
+  </div>
+</ion-content>
