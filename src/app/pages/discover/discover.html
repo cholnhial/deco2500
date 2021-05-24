@@ -19,7 +19,7 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar *ngIf="!ios">
-    <ion-segment>
+    <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="news-feed">
         News Feed
       </ion-segment-button>
