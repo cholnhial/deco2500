@@ -75,7 +75,7 @@ export class SearchPage {
              shouldHide = true;
           }
           return {...l, hideForChat: shouldHide};
-        })
+        });
       });
     });
   }
@@ -124,8 +124,8 @@ export class SearchPage {
         }
 
         this.sortByNewest();
-
         this.loadChats();
+
       }))
     });
   }
